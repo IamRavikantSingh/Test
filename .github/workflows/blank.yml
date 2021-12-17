@@ -1,0 +1,17 @@
+name: PR feature branch with master
+
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  autoupdate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Automatically update PR
+        uses: adRise/update-pr-branch@v0.5.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          base: 'master'
+          required_approval_count: 0
+          require_passed_checks: false
